@@ -25,14 +25,24 @@ export default (fixture, options = {}) => {
             filename: './bundle.js',
         },
         module: {
-            rules: [{
-                test: /\index.jsx?$/,
-                exclude: /node_modules/,
-                use: [{
-                    loader: path.resolve(__dirname, '../src/loader.js'),
-                    options
-                }]
-            }]
+            rules: [
+                {
+                  test: /\index.jsx?$/,
+                  exclude: /node_modules/,
+                  use: [{
+                      loader: path.resolve(__dirname, '../src/cn-decorator-loader.js'),
+                      options
+                  }]
+                },
+                {
+                  test: /\index.css?$/,
+                  exclude: /node_modules/,
+                  use: [{
+                      loader: path.resolve(__dirname, '../src/cn-decorator-postcss-loader.js'),
+                      options
+                  }]
+                }
+            ]
         }
       }
   );
