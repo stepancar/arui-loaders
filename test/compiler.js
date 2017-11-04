@@ -31,7 +31,9 @@ export default (fixture, options = {}) => {
                   exclude: /node_modules/,
                   use: [{
                       loader: path.resolve(__dirname, '../src/cn-decorator-loader.js'),
-                      options
+                      options: {
+                          cb: options.jsLoaderCb
+                      }
                   }]
                 },
                 {
@@ -39,7 +41,9 @@ export default (fixture, options = {}) => {
                   exclude: /node_modules/,
                   use: [{
                       loader: path.resolve(__dirname, '../src/cn-decorator-postcss-loader.js'),
-                      options
+                      options: {
+                           cb: options.cssLoaderCb
+                      }
                   }]
                 }
             ]
