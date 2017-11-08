@@ -23,7 +23,7 @@ export default function(source) {
     const importStr = `import cn from 'arui-feather/cn';\n`;
     source = source.splice(0, 0, importStr);
     const decoratorStr = `import './index.css';\n\n@cn('${dirName}')\n`;
-    const exportIndex = source.indexOf('export default class');//- 'export default class'.length;
+    const exportIndex = source.indexOf('export default class');
     source = source.splice(exportIndex, 0, decoratorStr)
         .replace('className={ cn }', 'className={ cn() }');
     if (options.cb) {
